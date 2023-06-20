@@ -1,7 +1,8 @@
 import React from 'react';
+import './App.scss';
 
 function App() {
-  return <div className="App"></div>;
+  return <main className="App"></main>;
 }
 
 export default App;
