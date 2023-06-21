@@ -1,0 +1,28 @@
+@use '../../../../scss/vars.scss';
+
+.button {
+  padding: 12px 16px;
+  border: 2px solid vars.$ui-color;
+  border-radius: vars.$border-radius;
+  background: #fff;
+}
+
+.hollow {
+  color: vars.$text-tertiary-color;
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: vars.$ui-hover-color;
+  }
+}
+
+.fill {
+  color: #fff;
+  background: vars.$ui-color;
+  transition: border-color 0.15s, background 0.15s;
+
+  &:hover {
+    background: vars.$ui-hover-color;
+    border-color: vars.$ui-hover-color;
+  }
+}
