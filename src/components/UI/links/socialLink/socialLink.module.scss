@@ -1,0 +1,17 @@
+@use '../../../../scss/vars';
+
+.link {
+  color: vars.$text-tertiary-color;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: '';
+    width: 13px;
+    height: 12px;
+    margin-right: 6px;
+    display: block;
+    background: url('../../../../assets/img/icons/folder.svg') center no-repeat;
+  }
+}
