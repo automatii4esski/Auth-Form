@@ -10,3 +10,8 @@ export interface SelectOptionsObjectType {
   options: SelectOptionType[];
   defaultValue: SelectOptionType;
 }
+
+export interface SocialLinkType {
+  text: string;
+  href: string;
+}

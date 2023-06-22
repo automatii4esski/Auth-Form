@@ -5,6 +5,11 @@
   font-size: 12px;
   display: flex;
   align-items: center;
+  transition: color 0.15s;
+
+  &:hover {
+    color: vars.$ui-hover-color;
+  }
 
   &::before {
     content: '';
