@@ -23,3 +23,7 @@ export interface TipAndErrorWrapperProps extends GetAttributes<'div'> {
   error?: string;
   tip?: string;
 }
+
+export interface FormElementWrapperProps extends TipAndErrorWrapperProps {
+  title: string;
+}

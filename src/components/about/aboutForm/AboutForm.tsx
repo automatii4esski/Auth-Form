@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import styles from './aboutForm.module.scss';
-import TipAndErrorWrapper from '../../UI/wrappers/tipAndErrorWrapper/TipAndErrorWrapper';
 import Input from '../../UI/inputs/input/Input';
+import FormElementWrapper from '../../UI/wrappers/formElementWrapper/FormElementWrapper';
 
 const AboutForm: FC = () => {
   return (
     <form>
-      <TipAndErrorWrapper>
+      <FormElementWrapper title="Phone">
         <Input placeholder="erere" />
-      </TipAndErrorWrapper>
+      </FormElementWrapper>
     </form>
   );
 };
