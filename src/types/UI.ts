@@ -1,4 +1,5 @@
-import { GetAttributes } from './global';
+import { GetAttributes, SelectOptionType } from './global';
+import { Props } from 'react-select';
 
 export interface AvatarProps extends GetAttributes<'div'> {
   src: string;
@@ -12,3 +13,17 @@ export interface InputProps extends GetAttributes<'input'> {}
 export interface ButtonProps extends GetAttributes<'button'> {
   variant?: 'hollow' | 'fill';
 }
+
+export interface SelectProps extends Props<SelectOptionType> {
+  options: SelectOptionType[];
+  defaultValue?: SelectOptionType;
+}
+
+// export interface SelectProps<
+//   Option = unknown,
+//   IsMulti extends boolean = false,
+//   Group extends GroupBase<Option> = GroupBase<Option>
+// > extends GetAttributes<'div'> {
+//   options: SelectOptionType[];
+//   defaultValue?: SelectOptionType;
+// }

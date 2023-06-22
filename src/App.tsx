@@ -5,12 +5,17 @@ import Avatar from './components/UI/avatars/avatar/Avatar';
 import SocialLink from './components/UI/links/socialLink/SocialLink';
 import Input from './components/UI/inputs/input/Input';
 import Button from './components/UI/buttons/button/Button';
+import Select from './components/UI/selects/select/Select';
+import { sexOptions } from './data/selectOptions';
 
 function App() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <Button variant="hollow">test</Button>
+        <Select
+          defaultValue={sexOptions.defaultValue}
+          options={sexOptions.options}
+        />
       </div>
     </main>
   );

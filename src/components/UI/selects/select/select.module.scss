@@ -1,0 +1,32 @@
+@use '../../../../scss/vars';
+
+.control {
+  display: block;
+  padding: 12px;
+  width: 100%;
+  background: #fff;
+  border-radius: vars.$border-radius;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  color: vars.$text-secondary-color;
+  cursor: pointer !important;
+
+  &:disabled {
+    background: #f5f5f5;
+  }
+}
+
+.menu {
+  border-radius: vars.$border-radius;
+  background: #fff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.option {
+  padding: 8px 12px;
+  cursor: pointer !important;
+  transition: background 0.15s;
+
+  &:hover {
+    background: #f7f5f5;
+  }
+}
