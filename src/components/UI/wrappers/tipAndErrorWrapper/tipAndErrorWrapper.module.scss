@@ -1,0 +1,11 @@
+@use '../../../../scss/vars.scss';
+
+.error {
+  margin-bottom: 8px;
+  color: red;
+}
+
+.tip {
+  margin-top: 8px;
+  color: vars.$text-secondary-color;
+}

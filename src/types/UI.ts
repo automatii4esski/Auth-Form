@@ -18,3 +18,8 @@ export interface SelectProps extends Props<SelectOptionType> {
   options: SelectOptionType[];
   defaultValue?: SelectOptionType;
 }
+
+export interface TipAndErrorWrapperProps extends GetAttributes<'div'> {
+  error?: string;
+  tip?: string;
+}
