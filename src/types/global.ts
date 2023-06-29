@@ -24,3 +24,7 @@ export interface ActionType {
 }
 
 export interface RootReducerType extends ReturnType<typeof rootReducer> {}
+
+export interface MultInputValue {
+  value: string;
+}
