@@ -7,7 +7,7 @@ const ProgressLine: FC<ProgressLineProps> = ({
   className,
   active,
   total,
-  width = 0,
+  width = 100 * ((active - 1) / (total - 1)),
   ...props
 }) => {
   let isActivePassed = false;
@@ -17,21 +17,29 @@ const ProgressLine: FC<ProgressLineProps> = ({
     if (!isActivePassed) {
       isActivePassed = active === i;
       dots.push(
-        <ProgressLineDot key={i} variant={isActivePassed ? 'active' : 'done'} />
+        <ProgressLineDot key={i} variant={isActivePassed ? 'active' : 'done'}>
+          {i}
+        </ProgressLineDot>
       );
     } else {
-      dots.push(<ProgressLineDot key={i} variant="inactive" />);
+      dots.push(
+        <ProgressLineDot key={i} variant="inactive">
+          {i}
+        </ProgressLineDot>
+      );
     }
   }
 
   return (
     <div className={`${styles.line} ${className}`} {...props}>
-      <div
-        style={{
-          width: `${width}%`,
-        }}
-        className={styles.progress}
-      ></div>
+      <div className={styles.inner}>
+        <div
+          style={{
+            width: `${width}%`,
+          }}
+          className={styles.progress}
+        ></div>
+      </div>
 
       {dots}
     </div>

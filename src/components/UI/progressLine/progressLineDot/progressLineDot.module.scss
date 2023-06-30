@@ -2,6 +2,8 @@
 .dot {
   text-align: center;
   z-index: 5;
+  font-weight: 600;
+  color: vars.$text-tertiary-color;
 
   &::before {
     content: '';
@@ -29,4 +31,5 @@
 }
 
 .inactive {
+  color: #a6a6a6;
 }

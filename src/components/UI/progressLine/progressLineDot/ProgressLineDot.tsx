@@ -4,6 +4,7 @@ import { ProgressLineDotProps } from '../../../../types/UI';
 
 const ProgressLineDot: FC<ProgressLineDotProps> = ({
   className,
+  children,
   variant = 'inactive',
   ...props
 }) => {
@@ -11,7 +12,7 @@ const ProgressLineDot: FC<ProgressLineDotProps> = ({
 
   return (
     <div className={`${styles.dot} ${styles[variant]} ${className}`} {...props}>
-      1
+      {children}
     </div>
   );
 };
