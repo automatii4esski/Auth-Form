@@ -42,3 +42,12 @@ export interface MultInputProps extends GetAttributes<'div'> {
   register: UseFormRegister<FieldValues>;
   value: MultInputValue[];
 }
+
+export interface ProgressLineProps extends GetAttributes<'div'> {
+  width?: number;
+  total: number;
+  active: number;
+}
+export interface ProgressLineDotProps extends GetAttributes<'div'> {
+  variant?: 'active' | 'done' | 'inactive';
+}

@@ -1,0 +1,30 @@
+@use '../../../scss/vars.scss';
+
+.line {
+  height: 10px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 5;
+
+  &::before {
+    content: '';
+    height: 100%;
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    top: 3px;
+    background: #ebebeb;
+    z-index: -1;
+  }
+}
+
+.progress {
+  height: 100%;
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 3px;
+  position: absolute;
+  background: vars.$ui-color;
+}

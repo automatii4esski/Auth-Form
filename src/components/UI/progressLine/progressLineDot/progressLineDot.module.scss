@@ -1,0 +1,32 @@
+@use '../../../../scss/vars.scss';
+.dot {
+  text-align: center;
+  z-index: 5;
+
+  &::before {
+    content: '';
+    display: block;
+    background: #a6a6a6;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+  }
+}
+
+.active {
+  &::before {
+    background: url('../../../../assets/img/icons/dot.svg') center no-repeat
+      vars.$ui-color;
+  }
+}
+
+.done {
+  &::before {
+    background: url('../../../../assets/img/icons/done.svg') center no-repeat
+      vars.$ui-color;
+  }
+}
+
+.inactive {
+}
