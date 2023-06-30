@@ -7,30 +7,52 @@ import { AboutDataType } from '../../../types/about';
 import FormElementWrapper from '../../UI/wrappers/formElementWrapper/FormElementWrapper';
 import Input from '../../UI/inputs/input/Input';
 import InputWithMask from '../../UI/inputs/inputWithMask/InputWithMask';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { aboutSchema } from '../../../data/schemas';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAboutData } from '../../../store/about/aboutSelector';
+import { setAboutData } from '../../../store/about/aboutAction';
 
 const AboutForm: FC = () => {
+  const aboutData = useSelector(selectAboutData);
+  const dispatch = useDispatch();
+
   const { register, control, handleSubmit, formState } = useForm<AboutDataType>(
     {
-      defaultValues: {
-        phone: '99',
-      },
+      defaultValues: aboutData,
+      mode: 'onBlur',
+      resolver: yupResolver(aboutSchema),
     }
   );
+
   const { errors } = formState;
+
+  const onSubmit = handleSubmit((data) => {
+    dispatch(setAboutData(data));
+  });
 
   return (
     <>
-      <form className={styles.form} noValidate>
+      <form onSubmit={onSubmit} className={styles.form} noValidate>
         <div className={styles.elements}>
-          <FormElementWrapper title="Номер телефона">
+          {/* Phone */}
+          <FormElementWrapper
+            title="Номер телефона"
+            error={errors.phone?.message}
+          >
             <InputWithMask
               alwaysShowMask
               mask="+7 (999) 999-99-99"
+              defaultValue={aboutData.phone}
               {...register('phone')}
             />
           </FormElementWrapper>
 
-          <FormElementWrapper title="Номер телефона">
+          {/* Email */}
+          <FormElementWrapper
+            title="Номер телефона"
+            error={errors.email?.message}
+          >
             <Input {...register('email')} />
           </FormElementWrapper>
         </div>
@@ -43,27 +65,3 @@ const AboutForm: FC = () => {
 };
 
 export default AboutForm;
-
-// const { fields, append, remove } = useFieldArray({
-//   name: 'advantages' as never,
-//   control,
-// });
-
-/* {a.map((ch, i) => (
-            <input type="checkbox" key={i} {...register(`checkBoxes.${i}`)} />
-          ))}
-        </div>
-        <div>
-          <h1>gg</h1>
-          {fields.map((ad, i) => (
-            <>
-              <input
-                placeholder="Place"
-                type="text"
-                key={ad.id}
-                {...register(`advantages.${i}.value`)}
-              />
-              <button onClick={() => remove(i)}>remove</button>
-            </>
-          ))}
-          <button onClick={() => append({ value: '' })}>+</button>*/
