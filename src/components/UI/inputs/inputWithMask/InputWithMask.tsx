@@ -1,18 +1,16 @@
 import { forwardRef } from 'react';
 import InputMask from 'react-input-mask';
-import Input from '../input/Input';
 import { InputWithMaskProps } from '../../../../types/UI';
+import styles from '../input/input.module.scss';
 
 const InputWithMask = forwardRef<any, InputWithMaskProps>(
-  ({ ...props }, ref) => {
+  ({ className, ...props }, ref) => {
     return (
-      <InputMask {...props}>
-        {
-          ((otherProps: any) => (
-            <Input {...otherProps} type="tel" ref={ref} />
-          )) as any
-        }
-      </InputMask>
+      <InputMask
+        className={`${styles.input} ${className}`}
+        ref={ref}
+        {...props}
+      />
     );
   }
 );

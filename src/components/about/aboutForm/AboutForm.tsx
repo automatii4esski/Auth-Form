@@ -12,10 +12,12 @@ import { aboutSchema } from '../../../data/schemas';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAboutData } from '../../../store/about/aboutSelector';
 import { setAboutData } from '../../../store/about/aboutAction';
+import { useNavigate } from 'react-router-dom';
 
 const AboutForm: FC = () => {
   const aboutData = useSelector(selectAboutData);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { register, control, handleSubmit, formState } = useForm<AboutDataType>(
     {
@@ -28,6 +30,7 @@ const AboutForm: FC = () => {
   const { errors } = formState;
 
   const onSubmit = handleSubmit((data) => {
+    navigate('create');
     dispatch(setAboutData(data));
   });
 
@@ -41,8 +44,8 @@ const AboutForm: FC = () => {
             error={errors.phone?.message}
           >
             <InputWithMask
-              alwaysShowMask
               mask="+7 (999) 999-99-99"
+              disabled
               defaultValue={aboutData.phone}
               {...register('phone')}
             />
@@ -53,7 +56,7 @@ const AboutForm: FC = () => {
             title="Номер телефона"
             error={errors.email?.message}
           >
-            <Input {...register('email')} />
+            <Input disabled {...register('email')} />
           </FormElementWrapper>
         </div>
 
