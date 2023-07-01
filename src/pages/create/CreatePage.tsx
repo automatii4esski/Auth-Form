@@ -8,13 +8,16 @@ import queryString from 'query-string';
 
 const CreatePage: FC = () => {
   const location = useLocation();
-  console.log(location);
-
   const active = +queryString.parse(location.search).step! - 1;
+
   const formSteps = [<FirstStepForm />, <SecondStepForm />];
   return (
     <div className={styles.create}>
-      <ProgressLine className={styles.line} total={3} active={1} />
+      <ProgressLine
+        className={styles.line}
+        total={formSteps.length}
+        active={active + 1}
+      />
       {formSteps[active]}
     </div>
   );

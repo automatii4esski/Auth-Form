@@ -15,10 +15,12 @@ import { firstStepSchema } from '../../../../data/schemas';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFirstStepData } from '../../../../store/create/firstStep/firstStepSelector';
 import { setFirstStepData } from '../../../../store/create/firstStep/firstStepAction';
+import { useFormStepQuery } from '../../../../hooks/useFormStepQuery';
 
 const FirstStepForm: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [queryOnNext, queryOnBack] = useFormStepQuery();
   const firstStepData = useSelector(selectFirstStepData);
 
   const { formState, register, handleSubmit, control } =
@@ -31,10 +33,11 @@ const FirstStepForm: FC = () => {
   const { errors } = formState;
 
   const onSubmit = handleSubmit((data) => {
+    navigate(queryOnNext);
     dispatch(setFirstStepData(data));
   });
   const onBack = function () {
-    navigate('/');
+    navigate(queryOnBack);
   };
 
   return (
