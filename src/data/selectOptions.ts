@@ -11,8 +11,5 @@ export const sexOptions: SelectOptionsObjectType = {
       value: 'woman',
     },
   ],
-  defaultValue: {
-    label: 'Dada',
-    value: '',
-  },
+  placeholder: 'Не выбрано',
 };

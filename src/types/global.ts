@@ -10,7 +10,7 @@ export interface SelectOptionType {
 
 export interface SelectOptionsObjectType {
   options: SelectOptionType[];
-  defaultValue: SelectOptionType;
+  placeholder: string;
 }
 
 export interface SocialLinkType {
@@ -19,7 +19,7 @@ export interface SocialLinkType {
 }
 
 export interface ActionType {
-  payload: any;
+  payload?: any;
   type: string;
 }
 

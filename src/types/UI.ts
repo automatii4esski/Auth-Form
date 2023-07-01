@@ -1,7 +1,9 @@
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 import { GetAttributes, MultInputValue, SelectOptionType } from './global';
-import { Props as ReactSelectProps } from 'react-select';
+import { RefAttributes } from 'react';
+import { Props as ReactSelectProps, SingleValue } from 'react-select';
 import { Props as ReactInputProps } from 'react-input-mask';
+import { StateManagerProps } from 'react-select/dist/declarations/src/useStateManager';
 
 export interface AvatarProps extends GetAttributes<'div'> {
   src: string;
@@ -21,11 +23,6 @@ export type Char<T extends '' = ''> = `${string}${''}${T}`;
 
 export interface ButtonProps extends GetAttributes<'button'> {
   variant?: 'hollow' | 'fill';
-}
-
-export interface SelectProps extends ReactSelectProps<SelectOptionType> {
-  options: SelectOptionType[];
-  defaultValue?: SelectOptionType;
 }
 
 export interface TipAndErrorWrapperProps extends GetAttributes<'div'> {

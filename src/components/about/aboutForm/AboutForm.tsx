@@ -30,7 +30,7 @@ const AboutForm: FC = () => {
   const { errors } = formState;
 
   const onSubmit = handleSubmit((data) => {
-    navigate('create');
+    navigate('create?step=1');
     dispatch(setAboutData(data));
   });
 
@@ -56,7 +56,7 @@ const AboutForm: FC = () => {
             title="Номер телефона"
             error={errors.email?.message}
           >
-            <Input disabled {...register('email')} />
+            <Input disabled placeholder="Email" {...register('email')} />
           </FormElementWrapper>
         </div>
 
