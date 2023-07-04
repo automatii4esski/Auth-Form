@@ -12,6 +12,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { setSecondStepData } from '../../../store/create/secondStep/secondStepAction';
 import Input from '../../UI/inputs/input/Input';
 import InputWithDelete from '../../UI/inputs/inputWithDelete/InputWithDelete';
+import MultInputs from '../../UI/inputs/multInputs/MultInputs';
 
 const SecondStepForm: FC = () => {
   const dispatch = useDispatch();
@@ -54,7 +55,16 @@ const SecondStepForm: FC = () => {
         <div className={styles.elements}>
           {/* Advantages */}
           <FormElementWrapper title="Advantages" error={''}>
-            {fields.map((field, index) => (
+            <MultInputs<SecondStepDataType>
+              registerPathGenerator={(index) => `advantages.${index}.value`}
+              name="advantages"
+              onAppendValue={{ value: '' }}
+              control={control}
+              placeholder="Advantage"
+              register={register}
+            />
+
+            {/* {fields.map((field, index) => (
               <InputWithDelete
                 key={field.id}
                 {...register(`advantages.${index}.value`)}
@@ -68,7 +78,7 @@ const SecondStepForm: FC = () => {
               variant="hollow"
             >
               +
-            </Button>
+            </Button> */}
           </FormElementWrapper>
         </div>
         <div className={styles.buttons}>

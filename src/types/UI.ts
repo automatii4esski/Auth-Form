@@ -1,4 +1,11 @@
-import { UseFieldArrayRemove } from 'react-hook-form';
+import {
+  Control,
+  FieldValues,
+  UseFormRegister,
+  FieldArrayPath,
+  FieldArray,
+  FieldPath,
+} from 'react-hook-form';
 import { GetAttributes, MultInputValue, SelectOptionType } from './global';
 import { RefAttributes } from 'react';
 import { Props as ReactSelectProps, SingleValue } from 'react-select';
@@ -21,6 +28,17 @@ export interface InputWithMaskProps extends ReactInputProps {
 
 export interface InputWithDeleteProps extends InputProps {
   onDelete: () => void;
+}
+
+export interface MultInputsProps<TFieldValues extends FieldValues>
+  extends InputProps {
+  control: Control<TFieldValues, any>;
+  register: UseFormRegister<TFieldValues>;
+  name: FieldArrayPath<TFieldValues>;
+  registerPathGenerator: (index: number) => FieldPath<TFieldValues>;
+  onAppendValue:
+    | FieldArray<TFieldValues, FieldArrayPath<TFieldValues>>
+    | FieldArray<TFieldValues, FieldArrayPath<TFieldValues>>[];
 }
 
 export type Char<T extends '' = ''> = `${string}${''}${T}`;
