@@ -13,6 +13,16 @@ export interface SelectOptionsObjectType {
   placeholder: string;
 }
 
+export interface CheckboxValue {
+  value: string;
+  isChecked: boolean;
+}
+
+export interface RadioGroup {
+  values: string[];
+  checkedValue: string | undefined;
+}
+
 export interface SocialLinkType {
   text: string;
   href: string;

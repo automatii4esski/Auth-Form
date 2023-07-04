@@ -44,6 +44,9 @@ export interface MultInputsProps<TFieldValues extends FieldValues>
 export interface CheckboxProps
   extends Omit<GetAttributes<'input'>, 'type' | 'ref'> {}
 
+export interface RadioProps
+  extends Omit<GetAttributes<'input'>, 'type' | 'ref'> {}
+
 export interface ButtonProps extends GetAttributes<'button'> {
   variant?: 'hollow' | 'fill';
 }

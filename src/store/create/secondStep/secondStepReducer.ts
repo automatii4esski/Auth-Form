@@ -4,8 +4,15 @@ import { SET_SECOND_STEP_DATA } from '../../consts';
 
 const initSecondStepData: SecondStepDataStateType = {
   advantages: ['', '', ''],
-  checkboxes: [],
-  radio: undefined,
+  checkboxes: [
+    { value: '1', isChecked: false },
+    { value: '2', isChecked: false },
+    { value: '3', isChecked: false },
+  ],
+  radio: {
+    values: ['1', '2', '3'],
+    checkedValue: undefined,
+  },
 };
 
 export const secondStepReducer = function (

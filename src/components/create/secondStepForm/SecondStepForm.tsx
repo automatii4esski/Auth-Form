@@ -14,6 +14,7 @@ import Input from '../../UI/inputs/input/Input';
 import InputWithDelete from '../../UI/inputs/inputWithDelete/InputWithDelete';
 import MultInputs from '../../UI/inputs/multInputs/MultInputs';
 import Checkbox from '../../UI/inputs/checkbox/Checkbox';
+import Radio from '../../UI/inputs/radio/Radio';
 
 const SecondStepForm: FC = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const SecondStepForm: FC = () => {
       defaultValues: {
         ...secondStepData,
         advantages: secondStepData.advantages.map((adv) => ({ value: adv })),
+        radio: secondStepData.radio.checkedValue,
       },
       mode: 'onBlur',
       // resolver: yupResolver(firstStepSchema),
@@ -37,6 +39,10 @@ const SecondStepForm: FC = () => {
       setSecondStepData({
         ...data,
         advantages: data.advantages.map((adv) => adv.value),
+        radio: {
+          values: secondStepData.radio.values,
+          checkedValue: data.radio,
+        },
       })
     );
     queryOnNext();
@@ -61,16 +67,26 @@ const SecondStepForm: FC = () => {
             />
           </FormElementWrapper>
 
+          {/* Checkboxes */}
           <FormElementWrapper title="Checkbox group">
-            <Checkbox value={'checked'} {...register('checkboxes')}>
-              1
-            </Checkbox>
-            <Checkbox value={'checked'} {...register('checkboxes')}>
-              2
-            </Checkbox>
-            <Checkbox value={'checked'} {...register('checkboxes')}>
-              3
-            </Checkbox>
+            {secondStepData.checkboxes.map((checkbox, index) => (
+              <Checkbox
+                key={index}
+                defaultChecked={checkbox.isChecked}
+                {...register(`checkboxes.${index}.isChecked`)}
+              >
+                {checkbox.value}
+              </Checkbox>
+            ))}
+          </FormElementWrapper>
+
+          {/* Radio */}
+          <FormElementWrapper title="Radio group">
+            {secondStepData.radio.values.map((radio, index) => (
+              <Radio key={index} value={radio} {...register('radio')}>
+                {radio}
+              </Radio>
+            ))}
           </FormElementWrapper>
         </div>
         <div className={styles.buttons}>
