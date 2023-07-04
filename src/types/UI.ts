@@ -41,7 +41,8 @@ export interface MultInputsProps<TFieldValues extends FieldValues>
     | FieldArray<TFieldValues, FieldArrayPath<TFieldValues>>[];
 }
 
-export type Char<T extends '' = ''> = `${string}${''}${T}`;
+export interface CheckboxProps
+  extends Omit<GetAttributes<'input'>, 'type' | 'ref'> {}
 
 export interface ButtonProps extends GetAttributes<'button'> {
   variant?: 'hollow' | 'fill';

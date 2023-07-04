@@ -13,6 +13,7 @@ import { setSecondStepData } from '../../../store/create/secondStep/secondStepAc
 import Input from '../../UI/inputs/input/Input';
 import InputWithDelete from '../../UI/inputs/inputWithDelete/InputWithDelete';
 import MultInputs from '../../UI/inputs/multInputs/MultInputs';
+import Checkbox from '../../UI/inputs/checkbox/Checkbox';
 
 const SecondStepForm: FC = () => {
   const dispatch = useDispatch();
@@ -28,11 +29,6 @@ const SecondStepForm: FC = () => {
       mode: 'onBlur',
       // resolver: yupResolver(firstStepSchema),
     });
-
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: 'advantages',
-  });
 
   const { errors } = formState;
 
@@ -63,22 +59,18 @@ const SecondStepForm: FC = () => {
               placeholder="Advantage"
               register={register}
             />
+          </FormElementWrapper>
 
-            {/* {fields.map((field, index) => (
-              <InputWithDelete
-                key={field.id}
-                {...register(`advantages.${index}.value`)}
-                onDelete={() => remove(index)}
-                placeholder="Advantage"
-              />
-            ))}
-            <Button
-              className={styles['advantage-button']}
-              onClick={() => append({ value: '' })}
-              variant="hollow"
-            >
-              +
-            </Button> */}
+          <FormElementWrapper title="Checkbox group">
+            <Checkbox value={'checked'} {...register('checkboxes')}>
+              1
+            </Checkbox>
+            <Checkbox value={'checked'} {...register('checkboxes')}>
+              2
+            </Checkbox>
+            <Checkbox value={'checked'} {...register('checkboxes')}>
+              3
+            </Checkbox>
           </FormElementWrapper>
         </div>
         <div className={styles.buttons}>
