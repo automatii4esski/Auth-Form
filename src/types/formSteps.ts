@@ -6,3 +6,16 @@ export interface FirstStepDataType {
 }
 
 export interface FirstStepDataStateType extends FirstStepDataType {}
+
+export interface SecondStepDataType {
+  advantages: {
+    value: string;
+  }[];
+  checkboxes: number[];
+  radio: number | undefined;
+}
+
+export interface SecondStepDataStateType
+  extends Omit<SecondStepDataType, 'advantages'> {
+  advantages: string[];
+}

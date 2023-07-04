@@ -10,7 +10,6 @@ import Select from '../../../UI/selects/select/Select';
 import { sexOptions } from '../../../../data/selectOptions';
 import Button from '../../../UI/buttons/button/Button';
 import { SelectOptionType } from '../../../../types/global';
-import { useNavigate } from 'react-router-dom';
 import { firstStepSchema } from '../../../../data/schemas';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFirstStepData } from '../../../../store/create/firstStep/firstStepSelector';
@@ -18,7 +17,6 @@ import { setFirstStepData } from '../../../../store/create/firstStep/firstStepAc
 import { useQueryFormStep } from '../../../../hooks/useQueryFormStep';
 
 const FirstStepForm: FC = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [queryOnNext, queryOnBack] = useQueryFormStep();
   const firstStepData = useSelector(selectFirstStepData);
@@ -94,7 +92,7 @@ const FirstStepForm: FC = () => {
           </FormElementWrapper>
         </div>
         <div className={styles.buttons}>
-          <Button type="button" onClick={onBack} variant="hollow">
+          <Button onClick={onBack} variant="hollow">
             Назад
           </Button>
           <Button type="submit">Далее</Button>

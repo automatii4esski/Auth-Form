@@ -1,4 +1,4 @@
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { UseFieldArrayRemove } from 'react-hook-form';
 import { GetAttributes, MultInputValue, SelectOptionType } from './global';
 import { RefAttributes } from 'react';
 import { Props as ReactSelectProps, SingleValue } from 'react-select';
@@ -19,6 +19,10 @@ export interface InputWithMaskProps extends ReactInputProps {
   maskChar?: string;
 }
 
+export interface InputWithDeleteProps extends InputProps {
+  onDelete: () => void;
+}
+
 export type Char<T extends '' = ''> = `${string}${''}${T}`;
 
 export interface ButtonProps extends GetAttributes<'button'> {
@@ -34,17 +38,12 @@ export interface FormElementWrapperProps extends TipAndErrorWrapperProps {
   title: string;
 }
 
-export interface MultInputProps extends GetAttributes<'div'> {
-  name: string;
-  register: UseFormRegister<FieldValues>;
-  value: MultInputValue[];
-}
-
 export interface ProgressLineProps extends GetAttributes<'div'> {
   width?: number;
   total: number;
   active: number;
 }
+
 export interface ProgressLineDotProps extends GetAttributes<'div'> {
   variant?: 'active' | 'done' | 'inactive';
 }
