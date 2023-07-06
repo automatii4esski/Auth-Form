@@ -1,4 +1,4 @@
-import { object, ObjectSchema, string } from 'yup';
+import { object, ObjectSchema, string, array, boolean } from 'yup';
 import { AboutDataType } from '../types/about';
 import {
   emailRegExp,
@@ -8,10 +8,11 @@ import {
 } from './regExps';
 import {
   maxLengthMessage,
+  requiredAllInputsMessage,
   requiredInputMessage,
   wrongFormatMessage,
 } from './messages';
-import { FirstStepDataType } from '../types/formSteps';
+import { FirstStepDataType, SecondStepDataType } from '../types/formSteps';
 
 export const aboutSchema: ObjectSchema<AboutDataType> = object({
   phone: string()
@@ -36,4 +37,28 @@ export const firstStepSchema: ObjectSchema<FirstStepDataType> = object({
     .matches(lettersRegExp, wrongFormatMessage)
     .required(requiredInputMessage),
   sex: string().required(requiredInputMessage),
+});
+
+export const secondStepSchema: ObjectSchema<SecondStepDataType> = object({
+  advantages: array()
+    .of(
+      object({
+        value: string().defined(),
+      })
+    )
+    .defined()
+    .test(
+      '',
+      requiredAllInputsMessage,
+      (advantages) => !advantages.some((adv) => adv.value === '')
+    ),
+  checkboxes: array()
+    .of(
+      object({
+        value: string().defined(),
+        isChecked: boolean().defined(),
+      })
+    )
+    .defined(),
+  radio: string().required(requiredInputMessage),
 });

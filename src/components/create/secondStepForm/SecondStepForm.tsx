@@ -15,6 +15,7 @@ import InputWithDelete from '../../UI/inputs/inputWithDelete/InputWithDelete';
 import MultInputs from '../../UI/inputs/multInputs/MultInputs';
 import Checkbox from '../../UI/inputs/checkbox/Checkbox';
 import Radio from '../../UI/inputs/radio/Radio';
+import { secondStepSchema } from '../../../data/schemas';
 
 const SecondStepForm: FC = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const SecondStepForm: FC = () => {
         radio: secondStepData.radio.checkedValue,
       },
       mode: 'onBlur',
-      // resolver: yupResolver(firstStepSchema),
+      resolver: yupResolver(secondStepSchema),
     });
 
   const { errors } = formState;
@@ -50,13 +51,17 @@ const SecondStepForm: FC = () => {
   const onBack = function () {
     queryOnBack();
   };
+  console.log(errors);
 
   return (
     <>
       <form noValidate onSubmit={onSubmit}>
         <div className={styles.elements}>
           {/* Advantages */}
-          <FormElementWrapper title="Advantages" error={''}>
+          <FormElementWrapper
+            title="Advantages"
+            error={errors.advantages?.message}
+          >
             <MultInputs<SecondStepDataType>
               registerPathGenerator={(index) => `advantages.${index}.value`}
               name="advantages"
