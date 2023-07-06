@@ -1,21 +1,19 @@
 import { FC } from 'react';
 import styles from './secondStepForm.module.scss';
-import FormElementWrapper from '../../UI/wrappers/formElementWrapper/FormElementWrapper';
+import FormElementWrapper from '../../../UI/wrappers/formElementWrapper/FormElementWrapper';
 import { Controller, useForm, useFieldArray } from 'react-hook-form';
-import Button from '../../UI/buttons/button/Button';
+import Button from '../../../UI/buttons/button/Button';
 import { DevTool } from '@hookform/devtools';
 import { useDispatch, useSelector } from 'react-redux';
-import { SecondStepDataType } from '../../../types/formSteps';
-import { selectSecondStepData } from '../../../store/create/secondStep/secondStepSelector';
-import { useQueryFormStep } from '../../../hooks/useQueryFormStep';
+import { SecondStepDataType } from '../../../../types/formSteps';
+import { selectSecondStepData } from '../../../../store/create/secondStep/secondStepSelector';
+import { useQueryFormStep } from '../../../../hooks/useQueryFormStep';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { setSecondStepData } from '../../../store/create/secondStep/secondStepAction';
-import Input from '../../UI/inputs/input/Input';
-import InputWithDelete from '../../UI/inputs/inputWithDelete/InputWithDelete';
-import MultInputs from '../../UI/inputs/multInputs/MultInputs';
-import Checkbox from '../../UI/inputs/checkbox/Checkbox';
-import Radio from '../../UI/inputs/radio/Radio';
-import { secondStepSchema } from '../../../data/schemas';
+import { setSecondStepData } from '../../../../store/create/secondStep/secondStepAction';
+import MultInputs from '../../../UI/inputs/multInputs/MultInputs';
+import Checkbox from '../../../UI/inputs/checkbox/Checkbox';
+import Radio from '../../../UI/inputs/radio/Radio';
+import { secondStepSchema } from '../../../../data/schemas';
 
 const SecondStepForm: FC = () => {
   const dispatch = useDispatch();
@@ -86,7 +84,7 @@ const SecondStepForm: FC = () => {
           </FormElementWrapper>
 
           {/* Radio */}
-          <FormElementWrapper title="Radio group">
+          <FormElementWrapper title="Radio group" error={errors.radio?.message}>
             {secondStepData.radio.values.map((radio, index) => (
               <Radio key={index} value={radio} {...register('radio')}>
                 {radio}

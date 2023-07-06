@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from './createPage.module.scss';
 import ProgressLine from '../../components/UI/progressLine/ProgressLine';
 import FirstStepForm from '../../components/create/formSteps/firstStepForm/FirstStepForm';
-import SecondStepForm from '../../components/create/secondStepForm/SecondStepForm';
+import SecondStepForm from '../../components/create/formSteps/secondStepForm/SecondStepForm';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 
