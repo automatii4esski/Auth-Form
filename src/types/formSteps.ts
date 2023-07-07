@@ -22,3 +22,9 @@ export interface SecondStepDataStateType
   advantages: string[];
   radio: RadioGroup;
 }
+
+export interface ThirdStepDataType {
+  about: string;
+}
+
+export interface ThirdStepDataStateType extends ThirdStepDataType {}

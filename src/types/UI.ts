@@ -69,3 +69,5 @@ export interface ProgressLineProps extends GetAttributes<'div'> {
 export interface ProgressLineDotProps extends GetAttributes<'div'> {
   variant?: 'active' | 'done' | 'inactive';
 }
+
+export interface TextareaProps extends Omit<GetAttributes<'textarea'>, 'ref'> {}

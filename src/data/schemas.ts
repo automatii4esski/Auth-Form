@@ -12,7 +12,11 @@ import {
   requiredInputMessage,
   wrongFormatMessage,
 } from './messages';
-import { FirstStepDataType, SecondStepDataType } from '../types/formSteps';
+import {
+  FirstStepDataType,
+  SecondStepDataType,
+  ThirdStepDataType,
+} from '../types/formSteps';
 
 export const aboutSchema: ObjectSchema<AboutDataType> = object({
   phone: string()
@@ -61,4 +65,8 @@ export const secondStepSchema: ObjectSchema<SecondStepDataType> = object({
     )
     .defined(),
   radio: string().required(requiredInputMessage),
+});
+
+export const thirdStepSchema: ObjectSchema<ThirdStepDataType> = object({
+  about: string().required(requiredInputMessage),
 });

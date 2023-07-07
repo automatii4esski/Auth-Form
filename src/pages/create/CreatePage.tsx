@@ -5,12 +5,13 @@ import FirstStepForm from '../../components/create/formSteps/firstStepForm/First
 import SecondStepForm from '../../components/create/formSteps/secondStepForm/SecondStepForm';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
+import ThirdStepForm from '../../components/create/formSteps/thirdStepForm/ThirdStepForm';
 
 const CreatePage: FC = () => {
   const location = useLocation();
   const active = +queryString.parse(location.search).step! - 1;
 
-  const formSteps = [<FirstStepForm />, <SecondStepForm />];
+  const formSteps = [<FirstStepForm />, <SecondStepForm />, <ThirdStepForm />];
   return (
     <div className={styles.create}>
       <ProgressLine
