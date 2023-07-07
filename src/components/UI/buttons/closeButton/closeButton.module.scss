@@ -1,0 +1,25 @@
+.button {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+  gap: 10px;
+  width: 28px;
+  border: none;
+  height: 28px;
+  transition: background 0.15s;
+
+  &:hover {
+    background: darken(#f5f5f5, 5%);
+  }
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+
+  & path {
+    fill: #b3b3b3;
+  }
+}
