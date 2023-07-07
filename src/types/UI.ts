@@ -71,3 +71,7 @@ export interface ProgressLineDotProps extends GetAttributes<'div'> {
 }
 
 export interface TextareaProps extends Omit<GetAttributes<'textarea'>, 'ref'> {}
+
+export interface PopupProps extends GetAttributes<'div'> {
+  isVisible: boolean;
+}

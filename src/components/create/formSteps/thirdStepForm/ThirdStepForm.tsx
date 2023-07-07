@@ -13,6 +13,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { thirdStepSchema } from '../../../../data/schemas';
 import Textarea from '../../../UI/textarea/textarea/Textarea';
 import { maxAboutInputLength } from '../../../../data/config';
+import Popup from '../../../UI/popup/popup/Popup';
+import FailPopupContent from '../../../popup/failPopupContent/FailPopupContent';
 
 const ThirdStepForm: FC = () => {
   const dispatch = useDispatch();
@@ -60,6 +62,9 @@ const ThirdStepForm: FC = () => {
           <Button type="submit">Отправить</Button>
         </div>
       </form>
+      <Popup isVisible>
+        <FailPopupContent />
+      </Popup>
       <DevTool control={control} />
     </>
   );
