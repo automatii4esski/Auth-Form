@@ -8,8 +8,6 @@ const ProgressLineDot: FC<ProgressLineDotProps> = ({
   variant = 'inactive',
   ...props
 }) => {
-  console.log(variant);
-
   return (
     <div className={`${styles.dot} ${styles[variant]} ${className}`} {...props}>
       {children}

@@ -28,3 +28,9 @@ export interface ThirdStepDataType {
 }
 
 export interface ThirdStepDataStateType extends ThirdStepDataType {}
+
+export type DataStateType = [
+  FirstStepDataStateType,
+  SecondStepDataStateType,
+  ThirdStepDataStateType
+];

@@ -1,25 +1,27 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import styles from './createPage.module.scss';
 import ProgressLine from '../../components/UI/progressLine/ProgressLine';
-import FirstStepForm from '../../components/create/formSteps/firstStepForm/FirstStepForm';
-import SecondStepForm from '../../components/create/formSteps/secondStepForm/SecondStepForm';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
-import ThirdStepForm from '../../components/create/formSteps/thirdStepForm/ThirdStepForm';
-
+import { formSteps } from '../../data/formSteps';
 const CreatePage: FC = () => {
   const location = useLocation();
-  const active = +queryString.parse(location.search).step! - 1;
+  const navigate = useNavigate();
+  const active = +queryString.parse(location.search).step!;
+  useEffect(() => {
+    if (active > formSteps.length || active < 1) {
+      navigate('/');
+    }
+  }, []);
 
-  const formSteps = [<FirstStepForm />, <SecondStepForm />, <ThirdStepForm />];
   return (
     <div className={styles.create}>
       <ProgressLine
         className={styles.line}
         total={formSteps.length}
-        active={active + 1}
+        active={active}
       />
-      {formSteps[active]}
+      {formSteps[active - 1]}
     </div>
   );
 };

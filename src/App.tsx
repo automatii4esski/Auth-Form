@@ -10,7 +10,7 @@ function App() {
       <div className={styles.container}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<AboutPage />} />
+            <Route index element={<AboutPage />} />
             <Route path="/create" element={<CreatePage />} />
             <Route path="*" element={<AboutPage />} />
           </Routes>
