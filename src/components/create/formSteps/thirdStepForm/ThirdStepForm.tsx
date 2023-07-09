@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './thirdStepForms.module.scss';
 import Button from '../../../UI/buttons/button/Button';
 import { DevTool } from '@hookform/devtools';
@@ -14,12 +14,24 @@ import { thirdStepSchema } from '../../../../data/schemas';
 import Textarea from '../../../UI/textarea/textarea/Textarea';
 import { maxAboutInputLength } from '../../../../data/config';
 import Popup from '../../../UI/popup/popup/Popup';
+import SuccessPopupContent from '../../../popup/successPopupContent/SuccessPopupContent';
+import { PopupStatus } from '../../../../types/global';
+import { useFetch } from '../../../../hooks/useFetch';
 import FailPopupContent from '../../../popup/failPopupContent/FailPopupContent';
+import Loader from '../../../UI/loader/loader/Loader';
+import { useNavigate } from 'react-router-dom';
 
 const ThirdStepForm: FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [_, queryOnBack] = useQueryFormStep();
   const thirdStepData = useSelector(selectThirdStepData);
+  const [popupStatus, setPopupStatus] = useState<PopupStatus>('disabled');
+  const [fetchData, isLoading, error] = useFetch(async () => {
+    await fetch('https://api.sbercloud.ru/content/v1/bootcamp/frontend', {
+      method: 'POST',
+    });
+  });
 
   const { formState, register, handleSubmit, control, watch } =
     useForm<ThirdStepDataType>({
@@ -33,9 +45,21 @@ const ThirdStepForm: FC = () => {
 
   const onSubmit = handleSubmit((data) => {
     dispatch(setThirdStepData(data));
+    fetchData();
+    setPopupStatus('active');
   });
+
   const onBack = function () {
     queryOnBack();
+  };
+
+  const hidePopup = function () {
+    setPopupStatus('disabled');
+  };
+
+  const onSuccessPopupButtonClick = function () {
+    hidePopup();
+    navigate('/');
   };
 
   return (
@@ -62,8 +86,17 @@ const ThirdStepForm: FC = () => {
           <Button type="submit">Отправить</Button>
         </div>
       </form>
-      <Popup isVisible>
-        <FailPopupContent />
+      <Popup onClickOut={hidePopup} status={popupStatus}>
+        {isLoading ? (
+          <Loader />
+        ) : error ? (
+          <FailPopupContent
+            onCloseButtonClick={hidePopup}
+            onButtonClick={hidePopup}
+          />
+        ) : (
+          <SuccessPopupContent onButtonClick={onSuccessPopupButtonClick} />
+        )}
       </Popup>
       <DevTool control={control} />
     </>

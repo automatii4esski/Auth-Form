@@ -1,16 +1,30 @@
-import { FC } from 'react';
+import { FC, MouseEvent } from 'react';
 import styles from './popup.module.scss';
 import { PopupProps } from '../../../../types/UI';
 
 const Popup: FC<PopupProps> = ({
   className,
-  isVisible,
+  status,
   children,
+  onClickOut,
   ...props
 }) => {
+  const onContentClick = function (e: MouseEvent) {
+    e.stopPropagation();
+  };
+
   return (
-    <div className={styles.popup} {...props}>
-      <div className={`${styles.content} ${className}`}>{children}</div>
+    <div
+      className={`${styles.popup} ${styles[status]}`}
+      onClick={onClickOut}
+      {...props}
+    >
+      <div
+        className={`${styles.content} ${className}`}
+        onClick={onContentClick}
+      >
+        {children}
+      </div>
     </div>
   );
 };

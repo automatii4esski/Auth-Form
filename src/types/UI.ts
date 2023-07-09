@@ -6,7 +6,12 @@ import {
   FieldArray,
   FieldPath,
 } from 'react-hook-form';
-import { GetAttributes, MultInputValue, SelectOptionType } from './global';
+import {
+  GetAttributes,
+  MultInputValue,
+  PopupStatus,
+  SelectOptionType,
+} from './global';
 import { RefAttributes } from 'react';
 import { Props as ReactSelectProps, SingleValue } from 'react-select';
 import { Props as ReactInputProps } from 'react-input-mask';
@@ -73,5 +78,6 @@ export interface ProgressLineDotProps extends GetAttributes<'div'> {
 export interface TextareaProps extends Omit<GetAttributes<'textarea'>, 'ref'> {}
 
 export interface PopupProps extends GetAttributes<'div'> {
-  isVisible: boolean;
+  status: PopupStatus;
+  onClickOut: (...args: any) => any;
 }

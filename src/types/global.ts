@@ -38,3 +38,5 @@ export interface RootReducerType extends ReturnType<typeof rootReducer> {}
 export interface MultInputValue {
   value: string;
 }
+
+export type PopupStatus = 'disabled' | 'active';
