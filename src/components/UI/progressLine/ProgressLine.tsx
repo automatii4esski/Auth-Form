@@ -12,7 +12,6 @@ const ProgressLine: FC<ProgressLineProps> = ({
 }) => {
   let isActivePassed = false;
   const dots: ReactNode[] = [];
-  console.log(active);
 
   for (let i = 1; i < total + 1; i++) {
     if (!isActivePassed) {

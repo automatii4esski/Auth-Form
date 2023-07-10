@@ -5,6 +5,7 @@ import { SET_ABOUT_DATA } from '../consts';
 const initAboutDataValue: AboutDataStateType = {
   email: 'automatii4esski@gmail.com',
   phone: '+7 (932) 307-43-20',
+  isFilled: true,
 };
 
 export const aboutReducer = function (

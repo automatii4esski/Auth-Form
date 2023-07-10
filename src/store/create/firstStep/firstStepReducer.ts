@@ -1,16 +1,17 @@
-import { FirstStepDataType } from '../../../types/formSteps';
+import { FirstStepDataStateType } from '../../../types/formSteps';
 import { ActionType } from '../../../types/global';
 import { SET_FIRST_STEP_DATA } from '../../consts';
 
-const initFirstStepData: FirstStepDataType = {
+const initFirstStepData: FirstStepDataStateType = {
   name: '',
   nickname: '',
   sername: '',
   sex: '',
+  isFilled: false,
 };
 
 export const firstStepReducer = function (
-  state: FirstStepDataType = initFirstStepData,
+  state: FirstStepDataStateType = initFirstStepData,
   action: ActionType
 ) {
   switch (action.type) {

@@ -4,24 +4,22 @@ import ProgressLine from '../../components/UI/progressLine/ProgressLine';
 import { useLocation, useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 import { formSteps } from '../../data/formSteps';
+import { selectFirstStepData } from '../../store/create/firstStep/firstStepSelector';
+import { selectSecondStepData } from '../../store/create/secondStep/secondStepSelector';
+import { selectThirdStepData } from '../../store/create/thirdStep/thirdStepSelector';
+import { useSelector } from 'react-redux';
+import { useCheckSteps } from '../../hooks/useCheckPreviusSteps';
 const CreatePage: FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const active = +queryString.parse(location.search).step!;
-  useEffect(() => {
-    if (active > formSteps.length || active < 1) {
-      navigate('/');
-    }
-  }, []);
+  const activeStep = useCheckSteps();
 
   return (
     <div className={styles.create}>
       <ProgressLine
         className={styles.line}
         total={formSteps.length}
-        active={active}
+        active={activeStep}
       />
-      {formSteps[active - 1]}
+      {formSteps[activeStep - 1]}
     </div>
   );
 };

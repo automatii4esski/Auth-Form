@@ -31,7 +31,7 @@ const AboutForm: FC = () => {
 
   const onSubmit = handleSubmit((data) => {
     navigate('create?step=1');
-    dispatch(setAboutData(data));
+    dispatch(setAboutData({ ...data, isFilled: true }));
   });
 
   return (

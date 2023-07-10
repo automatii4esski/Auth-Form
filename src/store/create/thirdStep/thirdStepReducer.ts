@@ -4,6 +4,7 @@ import { SET_THIRD_STEP_DATA } from '../../consts';
 
 const initThirdStepData: ThirdStepDataStateType = {
   about: '',
+  isFilled: false,
 };
 
 export const thirdStepReducer = function (

@@ -31,7 +31,7 @@ const FirstStepForm: FC = () => {
   const { errors } = formState;
 
   const onSubmit = handleSubmit((data) => {
-    dispatch(setFirstStepData(data));
+    dispatch(setFirstStepData({ ...data, isFilled: true }));
     queryOnNext();
   });
   const onBack = function () {

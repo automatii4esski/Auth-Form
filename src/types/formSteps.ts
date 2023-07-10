@@ -1,4 +1,4 @@
-import { CheckboxValue, RadioGroup } from './global';
+import { CheckboxValue, DataStateType, RadioGroup } from './global';
 
 export interface FirstStepDataType {
   name: string;
@@ -7,7 +7,9 @@ export interface FirstStepDataType {
   sex: string;
 }
 
-export interface FirstStepDataStateType extends FirstStepDataType {}
+export interface FirstStepDataStateType
+  extends FirstStepDataType,
+    DataStateType {}
 
 export interface SecondStepDataType {
   advantages: {
@@ -18,7 +20,8 @@ export interface SecondStepDataType {
 }
 
 export interface SecondStepDataStateType
-  extends Omit<SecondStepDataType, 'advantages' | 'radio'> {
+  extends Omit<SecondStepDataType, 'advantages' | 'radio'>,
+    DataStateType {
   advantages: string[];
   radio: RadioGroup;
 }
@@ -27,9 +30,11 @@ export interface ThirdStepDataType {
   about: string;
 }
 
-export interface ThirdStepDataStateType extends ThirdStepDataType {}
+export interface ThirdStepDataStateType
+  extends ThirdStepDataType,
+    DataStateType {}
 
-export type DataStateType = [
+export type FormDataStateType = [
   FirstStepDataStateType,
   SecondStepDataStateType,
   ThirdStepDataStateType

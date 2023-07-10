@@ -40,3 +40,7 @@ export interface MultInputValue {
 }
 
 export type PopupStatus = 'disabled' | 'active';
+
+export interface DataStateType {
+  isFilled: boolean;
+}

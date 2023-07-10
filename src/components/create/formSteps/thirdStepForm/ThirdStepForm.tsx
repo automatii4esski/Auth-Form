@@ -44,7 +44,7 @@ const ThirdStepForm: FC = () => {
   const { errors } = formState;
 
   const onSubmit = handleSubmit((data) => {
-    dispatch(setThirdStepData(data));
+    dispatch(setThirdStepData({ ...data, isFilled: true }));
     fetchData();
     setPopupStatus('active');
   });

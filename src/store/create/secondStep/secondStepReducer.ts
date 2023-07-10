@@ -13,6 +13,7 @@ const initSecondStepData: SecondStepDataStateType = {
     values: ['1', '2', '3'],
     checkedValue: undefined,
   },
+  isFilled: false,
 };
 
 export const secondStepReducer = function (

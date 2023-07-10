@@ -1,23 +1,23 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-export const useQueryFormStep = function () {
+export const useQueryFormStep = function (): [() => void, () => void, number] {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const active = +searchParams.get('step')!;
+  const activeStep = +searchParams.get('step')!;
 
   const onNextStep = function () {
-    navigate(`?step=${active + 1}`);
+    navigate(`?step=${activeStep + 1}`);
   };
 
   const onPreviousStep = function () {
-    const isLastStep = active === 1;
+    const isLastStep = activeStep === 1;
     isLastStep
       ? navigate({
           pathname: '/',
         })
-      : navigate(`?step=${active - 1}`);
+      : navigate(`?step=${activeStep - 1}`);
   };
 
-  return [onNextStep, onPreviousStep];
+  return [onNextStep, onPreviousStep, activeStep];
 };

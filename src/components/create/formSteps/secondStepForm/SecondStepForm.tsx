@@ -42,6 +42,7 @@ const SecondStepForm: FC = () => {
           values: secondStepData.radio.values,
           checkedValue: data.radio,
         },
+        isFilled: true,
       })
     );
     queryOnNext();
