@@ -28,9 +28,16 @@ const ThirdStepForm: FC = () => {
   const thirdStepData = useSelector(selectThirdStepData);
   const [popupStatus, setPopupStatus] = useState<PopupStatus>('disabled');
   const [fetchData, isLoading, error] = useFetch(async () => {
-    await fetch('https://api.sbercloud.ru/content/v1/bootcamp/frontend', {
-      method: 'POST',
-    });
+    const response = await fetch(
+      'https://api.sbercloud.ru/content/v1/bootcamp/frontend',
+      {
+        method: 'GET',
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
   });
 
   const { formState, register, handleSubmit, control, watch } =
