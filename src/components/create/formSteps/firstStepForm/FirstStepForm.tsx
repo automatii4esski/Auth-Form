@@ -103,7 +103,6 @@ const FirstStepForm: FC = () => {
           <Button type="submit">Далее</Button>
         </div>
       </form>
-      <DevTool control={control} />
     </>
   );
 };

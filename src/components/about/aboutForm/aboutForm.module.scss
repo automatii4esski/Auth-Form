@@ -10,3 +10,9 @@
 .block {
   margin-bottom: 24px;
 }
+
+@media (max-width: 500px) {
+  .elements {
+    margin-bottom: 24px;
+  }
+}

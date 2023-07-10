@@ -105,7 +105,6 @@ const ThirdStepForm: FC = () => {
           <SuccessPopupContent onButtonClick={onSuccessPopupButtonClick} />
         )}
       </Popup>
-      <DevTool control={control} />
     </>
   );
 };

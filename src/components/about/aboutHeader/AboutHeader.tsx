@@ -9,7 +9,7 @@ const AboutHeader: FC = () => {
   return (
     <header className={styles.header}>
       <Avatar className={styles.avatar} src={AvatarImg} />
-      <div>
+      <div className={styles.box}>
         <h1 className={styles.name}>Скворцов Иван</h1>
         <div className={styles.links}>
           {socialLinks.map((link, index) => (

@@ -62,7 +62,6 @@ const AboutForm: FC = () => {
 
         <Button type="submit">Начать</Button>
       </form>
-      <DevTool control={control} />
     </>
   );
 };
