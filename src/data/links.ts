@@ -3,11 +3,11 @@ import { SocialLinkType } from '../types/global';
 export const socialLinks: SocialLinkType[] = [
   {
     text: 'Telegram',
-    href: '#',
+    href: 'https://t.me/Xideeeee',
   },
   {
     text: 'GitHub',
-    href: '#',
+    href: 'https://github.com/automatii4esski',
   },
   {
     text: 'Resume',

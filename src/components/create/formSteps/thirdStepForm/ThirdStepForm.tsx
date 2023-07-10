@@ -31,7 +31,7 @@ const ThirdStepForm: FC = () => {
     const response = await fetch(
       'https://api.sbercloud.ru/content/v1/bootcamp/frontend',
       {
-        method: 'GET',
+        method: 'POST',
       }
     );
 
