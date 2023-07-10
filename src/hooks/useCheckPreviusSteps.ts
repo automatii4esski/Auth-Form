@@ -8,15 +8,20 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { formSteps } from '../data/formSteps';
 import { selectAboutData } from '../store/about/aboutSelector';
 
+const plugDataState = {
+  isFilled: false,
+};
+
+const plugSelector = function (_: RootReducerType): DataStateType {
+  return plugDataState;
+};
+
 export const useCheckSteps = function () {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const activeStep = +searchParams.get('step')!;
-  useEffect(() => {
-    if (activeStep > formSteps.length || activeStep < 1) {
-      navigate('/');
-    }
-  }, []);
+
+  const isStepOutOfRange = activeStep > formSteps.length || activeStep < 1;
 
   const selectors: ((state: RootReducerType) => DataStateType)[] = [
     selectAboutData,
@@ -25,14 +30,13 @@ export const useCheckSteps = function () {
     selectThirdStepData,
   ];
 
-  const selector = selectors[activeStep - 1];
+  const selector = isStepOutOfRange ? plugSelector : selectors[activeStep - 1];
 
   const data = useSelector(selector);
 
   useEffect(() => {
-    if (!data.isFilled) {
-      navigate(`?step=${activeStep - 1}`);
-    }
+    if (isStepOutOfRange) navigate('/');
+    else if (!data.isFilled) navigate(`?step=${activeStep - 1}`);
   }, [activeStep]);
 
   return activeStep;

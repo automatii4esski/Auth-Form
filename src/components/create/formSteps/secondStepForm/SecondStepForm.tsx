@@ -50,7 +50,6 @@ const SecondStepForm: FC = () => {
   const onBack = function () {
     queryOnBack();
   };
-  console.log(errors);
 
   return (
     <>
