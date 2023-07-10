@@ -17,8 +17,7 @@ const plugSelector = function (_: RootReducerType): DataStateType {
 };
 
 export const useCheckSteps = function () {
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const activeStep = +searchParams.get('step')!;
 
   const isStepOutOfRange = activeStep > formSteps.length || activeStep < 1;
@@ -35,8 +34,8 @@ export const useCheckSteps = function () {
   const data = useSelector(selector);
 
   useEffect(() => {
-    if (isStepOutOfRange) navigate('/');
-    else if (!data.isFilled) navigate(`?step=${activeStep - 1}`);
+    if (isStepOutOfRange) setSearchParams(`step=${formSteps.length}`);
+    else if (!data.isFilled) setSearchParams(`step=${activeStep - 1}`);
   }, [activeStep]);
 
   return activeStep;

@@ -2,11 +2,15 @@ import { AboutDataStateType } from '../../types/about';
 import { ActionType } from '../../types/global';
 import { SET_ABOUT_DATA } from '../consts';
 
-const initAboutDataValue: AboutDataStateType = {
-  email: 'automatii4esski@gmail.com',
-  phone: '+7 (932) 307-43-20',
-  isFilled: true,
-};
+const dataFromLocalStorage = localStorage.getItem(SET_ABOUT_DATA);
+
+const initAboutDataValue: AboutDataStateType = dataFromLocalStorage
+  ? JSON.parse(dataFromLocalStorage)
+  : {
+      email: 'automatii4esski@gmail.com',
+      phone: '+7 (932) 307-43-20',
+      isFilled: true,
+    };
 
 export const aboutReducer = function (
   state: AboutDataStateType = initAboutDataValue,

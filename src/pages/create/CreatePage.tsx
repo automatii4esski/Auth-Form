@@ -8,7 +8,7 @@ import { selectFirstStepData } from '../../store/create/firstStep/firstStepSelec
 import { selectSecondStepData } from '../../store/create/secondStep/secondStepSelector';
 import { selectThirdStepData } from '../../store/create/thirdStep/thirdStepSelector';
 import { useSelector } from 'react-redux';
-import { useCheckSteps } from '../../hooks/useCheckPreviusSteps';
+import { useCheckSteps } from '../../hooks/useCheckSteps';
 const CreatePage: FC = () => {
   const activeStep = useCheckSteps();
 
