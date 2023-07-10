@@ -83,6 +83,11 @@ const FirstStepForm: FC = () => {
                   onChange={(option: SelectOptionType | null) => {
                     option && field.onChange(option.value);
                   }}
+                  value={
+                    field.value
+                      ? { value: field.value, label: field.value }
+                      : null
+                  }
                   onBlur={field.onBlur}
                   placeholder={sexOptions.placeholder}
                   options={sexOptions.options}

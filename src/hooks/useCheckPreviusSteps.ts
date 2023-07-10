@@ -20,8 +20,8 @@ export const useCheckSteps = function () {
 
   const selectors: ((state: RootReducerType) => DataStateType)[] = [
     selectAboutData,
-    // selectFirstStepData,
-    // selectSecondStepData,
+    selectFirstStepData,
+    selectSecondStepData,
     selectThirdStepData,
   ];
 
