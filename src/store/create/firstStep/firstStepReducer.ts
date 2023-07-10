@@ -2,13 +2,17 @@ import { FirstStepDataStateType } from '../../../types/formSteps';
 import { ActionType } from '../../../types/global';
 import { SET_FIRST_STEP_DATA } from '../../consts';
 
-const initFirstStepData: FirstStepDataStateType = {
-  name: '',
-  nickname: '',
-  sername: '',
-  sex: '',
-  isFilled: false,
-};
+const dataFromLocalStorage = localStorage.getItem(SET_FIRST_STEP_DATA);
+
+const initFirstStepData: FirstStepDataStateType = dataFromLocalStorage
+  ? JSON.parse(dataFromLocalStorage)
+  : {
+      name: '',
+      nickname: '',
+      sername: '',
+      sex: '',
+      isFilled: false,
+    };
 
 export const firstStepReducer = function (
   state: FirstStepDataStateType = initFirstStepData,
